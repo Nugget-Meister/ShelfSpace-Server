@@ -6,10 +6,22 @@ const bookController = require("./controllers/booksController");
 app.use(cors());
 app.use(express.json());
 
-app.use("/books", bookController);
+
+app.get("/books", async (req, res) => {
+  try {
+
+    const books = await bookController.fetchBooksFromDatabase();
+
+    
+    res.status(200).json(books);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 
 app.get("/", (req, res) => {
-  res.send("welcome to shelfSpace ");
+  res.send("Welcome to ShelfSpace");
 });
 
 app.get("*", (req, res) => {
@@ -19,7 +31,7 @@ app.get("*", (req, res) => {
 app.use((req, res) => {
   res
     .status(404)
-    .json({ status: "BAD", data: { error: "(app.js) No book t read" } });
+    .json({ status: "BAD", data: { error: "(app.js) No book to read" } });
 });
 
 module.exports = app;
