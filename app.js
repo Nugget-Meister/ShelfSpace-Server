@@ -19,6 +19,7 @@ app.get("*", (req, res) => {
 });
 
 
+
 app.use((req, res) => {
   res.status(404).json({ status: 'BAD', data: { error: "(app.js) wow sorry my friend" } });
 });
