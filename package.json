@@ -2,10 +2,10 @@
   "name": "shelfspace-server",
   "version": "1.0.0",
   "description": "Your Personal Bookstore in Your Pocket!",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
+    "start": "nodemon server.js",
     "db_schema": "psql -U postgres -f db/schema.sql",
     "db_seed": "psql -U postgres -f db/seed.sql"
   },
