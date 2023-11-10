@@ -63,3 +63,4 @@ book.put("/:id", async (req, res) => {
 });
 
 
+module.exports = book;
