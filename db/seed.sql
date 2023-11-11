@@ -1,4 +1,5 @@
 \c books_dev;
+
 INSERT INTO books (
         title,
         ISBN,
@@ -61,7 +62,53 @@ VALUES (
         4.5,
         TRUE,
         'https://m.media-amazon.com/images/I/713jIoMO3UL._SL1500_.jpg'
-    ) ON CONFLICT (ISBN) DO
+    ),
+    (
+        'The Lord Of The Ring',
+        '0618640150',
+        'J.R.R Tolkien',
+        'Fantasy',
+        4.3,
+        FALSE,
+        'https://m.media-amazon.com/images/I/710+HcoP38L._SL1500_.jpg'
+    ),
+    (
+        'Pride and Prejuice',
+        '0141439513',
+        'Jane Austen',
+        'Classic Literature',
+        4.7,
+        FALSE,
+        'https://m.media-amazon.com/images/I/71Q1tPupKjL._SL1360_.jpg'
+    ),
+    (
+        'The Fault in Our Stars',
+        '0525478817',
+        'John Green',
+        'Young Adult, Romance',
+        4.20,
+        FALSE,
+        'https://m.media-amazon.com/images/I/81a4kCNuH+L._SL1500_.jpg'
+    ),
+    (
+        'The Road',
+        '0307387895',
+        'Cormac McCarthy',
+        'Fiction, Dytopian',
+        3.9,
+        FALSE,
+        'https://m.media-amazon.com/images/I/71IJ1HC2a3L._SL1500_.jpg'
+    ) ,
+    (
+     'test-delete',
+     '09090900',
+     'test delete',
+     'test',
+     5.0,
+     TRUE,
+     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/1566px-Test-Logo.svg.png?20150906031702'
+    )
+    ON CONFLICT (ISBN) DO
 UPDATE
 SET title = EXCLUDED.title,
     author = EXCLUDED.author,
