@@ -8,9 +8,9 @@ const {
   updateBook,
 } = require("../queries/books.js");
 
-const book = express.Router();
+const books = express.Router();
 
-book.get("/:id", async (req, res) => {
+books.get("/:id", async (req, res) => {
   const { id } = req.params;
   const oneBook = await getOneBook(id);
   if (oneBook) {
@@ -20,16 +20,16 @@ book.get("/:id", async (req, res) => {
   }
 });
 
-book.get("/", async (req, res) => {
+books.get("/", async (req, res) => {
   const allBooks = await getAllBooks();
   if (allBooks[0]) {
     res.status(200).json({ success: true, data: { payload: allBooks } });
   } else {
-    res.status(404).json({ success: false, data: { error: "Server Error " } });
+    res.status(500).json({ success: false, data: { error: "Server Error " } });
   }
 });
 
-book.post("/", async (req, res) => {
+books.post("/", async (req, res) => {
   try {
     const createdBook = await createBook(req.body);
     res.json(createdBook);
@@ -38,7 +38,7 @@ book.post("/", async (req, res) => {
   }
 });
 
-book.delete("/:id", async (req, res) => {
+books.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const deletedBook = await deleteBook(id);
@@ -52,15 +52,15 @@ book.delete("/:id", async (req, res) => {
   }
 });
 
-book.put("/:id", async (req, res) => {
+books.put("/:id", async (req, res) => {
   const { id } = req.params;
   const updatedBook = await updateBook(id, req.body);
   if (updatedBook.id) {
     res.status(200).json(updatedBook);
   } else {
-    res.status(404).json("no book found with that id");
+    res.status(404).json("no books found with that id");
   }
 });
 
 
-module.exports = book;
+module.exports = books;
