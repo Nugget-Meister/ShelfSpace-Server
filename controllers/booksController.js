@@ -25,7 +25,7 @@ book.get("/", async (req, res) => {
   if (allBooks[0]) {
     res.status(200).json({ success: true, data: { payload: allBooks } });
   } else {
-    res.status(500).json({ success: false, data: { error: "Server Error " } });
+    res.status(404).json({ success: false, data: { error: "Server Error " } });
   }
 });
 
