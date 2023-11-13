@@ -47,11 +47,12 @@ const deleteBook = async (id) => {
   }
 };
 const updateBook = async (id, book) => {
+
   try {
     const { title, ISBN, author, genre, bookRating, hasRead, imageURL } = book;
     const updatedBook = await db.one(
-      "UPDATE books SET title=$1, ISBN=$2, author=$3, genre=$4, bookRating=$5, hasRead=$6, imageURL=$7 WHERE id=$8  RETURNING *",
-      [title, ISBN, author, genre, bookRating, hasRead, imageURL]
+      "UPDATE books SET title=$1, ISBN=$2, author=$3, genre=$4, bookRating=$5, hasRead=$6, imageURL=$7 WHERE id=$8 RETURNING *",
+      [title, ISBN, author, genre, bookRating, hasRead, imageURL, id]
     );
     return updatedBook;
   } catch (error) {

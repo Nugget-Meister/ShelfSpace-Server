@@ -59,7 +59,9 @@ books.delete("/:id", async (req, res) => {
 books.put("/:id", async (req, res) => {
   const { id } = req.params;
   console.log(`PUT request for item at id ${id} received.`)
+  // console.log(id, req.body)
   const updatedBook = await updateBook(id, req.body);
+  console.log(updatedBook)
   if (updatedBook.id) {
     res.status(200).json(updatedBook);
   } else {
