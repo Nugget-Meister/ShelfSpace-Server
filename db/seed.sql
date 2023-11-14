@@ -1,11 +1,10 @@
-\c books_dev;
-
+\ c books_dev;
 INSERT INTO books (
         title,
         ISBN,
         author,
         genre,
-        bookRating,
+        bookrating,
         hasRead,
         imageURL
     )
@@ -98,16 +97,7 @@ VALUES (
         3.9,
         FALSE,
         'https://m.media-amazon.com/images/I/71IJ1HC2a3L._SL1500_.jpg'
-    ) ,
-    (
-     'test-delete',
-     '09090900',
-     'test delete',
-     'test',
-     5.0,
-     TRUE,
-     'https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Test-Logo.svg/1566px-Test-Logo.svg.png?20150906031702'
-    )
+    ),
     ON CONFLICT (ISBN) DO
 UPDATE
 SET title = EXCLUDED.title,

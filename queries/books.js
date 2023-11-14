@@ -19,15 +19,15 @@ const getOneBook = async (id) => {
 const createBook = async (book) => {
   try {
     const createdBook = await db.one(
-      "INSERT INTO books (title, ISBN, author, genre, bookRating, hasRead, imageURL) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
+      "INSERT INTO books (title, isbn, author, genre, bookrating, hasRead, imageurl) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
       [
         book.title,
-        book.ISBN,
+        book.isbn,
         book.author,
         book.genre,
-        book.bookRating,
+        book.bookrating,
         book.hasRead,
-        book.imageURL,
+        book.imageurl,
       ]
     );
     return createdBook;
@@ -49,10 +49,10 @@ const deleteBook = async (id) => {
 const updateBook = async (id, book) => {
 
   try {
-    const { title, ISBN, author, genre, bookRating, hasRead, imageURL } = book;
+    const { title, isbn, author, genre, bookrating, hasRead, imageurl } = book;
     const updatedBook = await db.one(
-      "UPDATE books SET title=$1, ISBN=$2, author=$3, genre=$4, bookRating=$5, hasRead=$6, imageURL=$7 WHERE id=$8 RETURNING *",
-      [title, ISBN, author, genre, bookRating, hasRead, imageURL, id]
+      "UPDATE books SET title=$1, isbn=$2, author=$3, genre=$4, bookrating=$5, hasRead=$6, imageurl=$7 WHERE id=$8 RETURNING *",
+      [title, isbn, author, genre, bookrating, hasRead, imageurl, id]
     );
     return updatedBook;
   } catch (error) {
