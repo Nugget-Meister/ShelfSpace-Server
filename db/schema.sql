@@ -3,6 +3,7 @@
 CREATE DATABASE books_dev;
 
 \c books_dev;
+DROP TABLE IF EXISTS books;
 
 CREATE TABLE books (
     id SERIAL PRIMARY KEY,

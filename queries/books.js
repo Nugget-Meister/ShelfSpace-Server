@@ -26,7 +26,7 @@ const createBook = async (book) => {
         book.author,
         book.genre,
         book.bookrating,
-        book.hasRead,
+        book.hasread,
         book.imageurl,
       ]
     );
